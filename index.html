@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Starry Night</title>
+    <style>
+        /* خلفية سوداء كاملة */
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            overflow: hidden; /* باش النجوم ما يخرجوش لبرا */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* صناعة النجوم باستعمال ذكاء الـ CSS */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.5); opacity: 1; }
+        }
+
+        /* تنسيق الـ Card متاعك */
+        .container {
+            position: relative;
+            z-index: 1; /* باش تجي فوق النجوم */
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1); /* خلفية شفافة شوية */
+            backdrop-filter: blur(10px); /* تأثير بلوري مزيان */
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            width: 320px;
+            color: white;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        h1 { font-size: 24px; margin: 10px 0; letter-spacing: 1px; }
+        p { color: #ccc; font-size: 14px; margin-bottom: 30px; }
+
+        .links { display: flex; flex-direction: column; gap: 15px; }
+
+        .link-item {
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .link-item:hover {
+            background: white;
+            color: black;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars-container" id="stars"></div>
+
+    <div class="container">
+        <img src="9044a634e09b2a633ff73efad0fdf470.jpg" alt="Logo" class="logo">
+        <h1>Karim chiha</h1>
+        <p>Software Developer | Tech Enthusiast</p>
+
+        <div class="links">
+            <a href="#" class="link-item">LinkedIn</a>
+            <a href="#" class="link-item">GitHub</a>
+            <a href="#" class="link-item">Instagram</a>
+            <a href="#" class="link-item">Contact Me</a>
+        </div>
+    </div>
+
+    <script>
+        // كود بسيط لزيادة النجوم بطريقة عشوائية
+        const starsContainer = document.getElementById('stars');
+        const count = 150;
+
+        for (let i = 0; i < count; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            
+            // أماكن عشوائية
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            
+            // أحجام عشوائية
+            const size = Math.random() * 3;
+            
+            // سرعة وميض عشوائية
+            const duration = (Math.random() * 3 + 2) + 's';
+
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.setProperty('--duration', duration);
+
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>
